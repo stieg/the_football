@@ -12,12 +12,13 @@ AM_INIT_AUTOMAKE
 
 # Checks for programs.
 AC_PROG_CC
-# AM_PATH_GLIB_2_0
 
 # Checks for libraries.
-AC_CHECK_LIB([usb], [usb_init], [], [
-                    echo "X11 library is required for this program"
-                    exit -1])
+AC_CHECK_LIB([usb],
+             [usb_init],
+             [echo "Found libusb"],
+             [echo "libusb is required for this program"
+              exit -1])
 
 # Glib check
 PKG_CHECK_MODULES(GLIB,     [glib-2.0 >= 2.24.1])

@@ -28,7 +28,7 @@
  * S:  Product=Rocket Baby
  * C:  #Ifs= 1 Cfg#= 1 Atr=a0 MxPwr=100mA
  * I:  If#= 0 Alt= 0 #EPs= 1 Cls=03(HID  ) Sub=00 Prot=00 Driver=usbfs
-*/
+ */
 
 /**
  * is_rocket_baby_device:
@@ -39,10 +39,11 @@
  *
  **/
 static gboolean
-is_rocket_baby_device (usb_device *dev) /* IN */
+is_rocket_baby_device (struct usb_device *dev) /* IN */
 {
    g_return_val_if_fail(dev != NULL, FALSE);
-   return dev->idVendor == 0x0a81 && dev->idProduct == 0xff01;
+   return (dev->descriptor.idVendor == 0x0a81 &&
+           dev->descriptor.idProduct == 0xff01);
 } /* is_rocket_baby_device */
 
 
@@ -53,7 +54,7 @@ is_rocket_baby_device (usb_device *dev) /* IN */
  * Finds the Rocket Baby device
  *
  **/
-static usb_device *
+static struct usb_device *
 find_rocket_baby ()
 {
    struct usb_bus *bus;

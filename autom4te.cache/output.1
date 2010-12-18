@@ -3304,7 +3304,6 @@ else
 fi
 
 
-# AM_PATH_GLIB_2_0
 
 # Checks for libraries.
 
@@ -3345,16 +3344,10 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_usb_usb_init" >&5
 $as_echo "$ac_cv_lib_usb_usb_init" >&6; }
 if test "x$ac_cv_lib_usb_usb_init" = x""yes; then :
-  cat >>confdefs.h <<_ACEOF
-@%:@define HAVE_LIBUSB 1
-_ACEOF
-
-  LIBS="-lusb $LIBS"
-
+  echo "Found libusb"
 else
-  
-                    echo "X11 library is required for this program"
-                    exit -1
+  echo "libusb is required for this program"
+              exit -1
 fi
 
 
