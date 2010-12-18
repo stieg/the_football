@@ -57,14 +57,14 @@ is_rocket_baby_device (struct usb_device *dev) /* IN */
 static struct usb_device *
 find_rocket_baby ()
 {
-   struct usb_bus *bus;
-   struct usb_device *dev;
+   struct usb_bus *bus = NULL;
+   struct usb_device *dev = NULL;
 
    usb_find_busses();
    usb_find_devices();
 
-   for(bus = usb_get_busses(); bus != NULL; bus++)
-      for(dev = bus->devices; dev != NULL; dev++)
+   for(bus = usb_get_busses(); bus != NULL; bus = bus->next)
+      for(dev = bus->devices; dev != NULL; dev = dev->next)
          if (is_rocket_baby_device(dev))
             return dev;
 
