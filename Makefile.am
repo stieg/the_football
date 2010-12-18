@@ -7,5 +7,5 @@ bin_PROGRAMS = the-football
 
 the_football_SOURCES = the_football.c
 the_football_CFLAGS=-Wall -I/usr/local/include -I/usr/include $(GLIB_CFLAGS)
-the_football_LDFLAGS=-L/usr/local/lib -lusb $(GLIB_LIBS)
+the_football_LDFLAGS=-L/usr/local/lib -lusb -lcurses $(GLIB_LIBS)
 

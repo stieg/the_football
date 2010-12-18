@@ -19,6 +19,11 @@ AC_CHECK_LIB([usb],
              [echo "Found libusb"],
              [echo "libusb is required for this program"
               exit -1])
+AC_CHECK_LIB([curses],
+             [getch],
+             [],
+             [echo "libcurses is required for this program"
+              exit -1])
 
 # Glib check
 PKG_CHECK_MODULES(GLIB,     [glib-2.0 >= 2.24.1])

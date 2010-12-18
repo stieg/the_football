@@ -17,8 +17,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <usb.h>
+#include <curses.h>
 #include <glib.h>
+#include <glib/gprintf.h>
+#include <usb.h>
 
 /*
  * T:  Bus=03 Lev=01 Prnt=01 Port=04 Cnt=03 Dev#=  7 Spd=1.5 MxCh= 0
@@ -76,12 +78,20 @@ int
 main()
 {
    struct usb_device *h;
+   WINDOW *win;
    usb_init();
 
    h = find_rocket_baby();
+   /* if (h == NULL) */
+   /*    g_error("Rocket Baby device not found\n"); */
 
-   if (h == NULL)
-      g_error("Rocket Baby device not found\n");
+   win = initscr();
+   cbreak();
+   while(1) {
+      int c = getch();
+      g_printf("Got char %d\n", c);
+      fflush(NULL);
+   }
 
    return 0;
 }
