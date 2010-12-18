@@ -75,7 +75,7 @@ find_rocket_baby ()
 int
 main()
 {
-   usb_dev_handle *h;
+   struct usb_device *h;
    usb_init();
 
    h = find_rocket_baby();
