@@ -103,7 +103,7 @@ main()
    struct usb_device *dev;
    struct usb_dev_handle *devHandle;
    int status;
-   gboolean quit;
+   gboolean iAmNotAQuitter = TRUE;
 
    /* Initialize curses and the usb lib */
    initscr();
@@ -122,7 +122,7 @@ main()
       g_error("Failed to claim device\n");
 
    /* And do the loop until we quit */
-   for(quit = FALSE; !quit;) {
+   while(iAmNotAQuitter) {
       int c = getch();
 
       switch (c) {
@@ -139,8 +139,11 @@ main()
       case FB_KEY_RESET:
          break;
       case FB_KEY_QUIT:
-         quit = TRUE;
+          // We all knew this day would come...
+         iAmNotAQuitter = FALSE;
+         break;
       default:
+         // print a message...
          break;
       }
    }
