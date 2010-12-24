@@ -148,5 +148,6 @@ main()
       }
    }
 
+   g_printf("Bye...\n");
    return 0;
 }
